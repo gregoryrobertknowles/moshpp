@@ -194,7 +194,11 @@ class MocapSession(object):
 
         labels = [l.replace(' ', '') for l in mocap_read['labels']]
 
-        labels = np.vstack(labels).ravel()
+        if isinstance(labels[0], str):
+            labels = np.array(labels)
+        else:
+            labels = np.vstack(labels).ravel()
+                     
         if remove_label_before_colon:
             labels = [l.split(':')[-1] for l in labels]
         if labels_map is not None:
