@@ -117,7 +117,7 @@ def read_mocap(mocap_fname):
         labels = [f'*{lid}' if isinstance(l, np.ndarray) else l for lid, l in enumerate(labels)]
 
     elif mocap_fname.endswith('.c3d'):
-        print("processing c3d file")
+        print("processing c3d file, ", mocap_fname)
         _marker_data = ezc3d.c3d(mocap_fname)
         # points_residuals = c['data']['meta_points']['residuals']
         # analog_data = c['data']['analogs']
