@@ -193,9 +193,12 @@ class MocapSession(object):
 
         mocap_read = read_mocap(mocap_fname)
         self._marker_data = mocap_read['_marker_data']  # this is used for SOMA evaluation to get per frame labels
-
+        print("DEBUG mocap_read['labels'] type:", type(mocap_read['labels']))
+        print("DEBUG mocap_read['labels'] length:", len(mocap_read['labels']))
+        print("DEBUG mocap_read['labels'] value:", mocap_read['labels'])
         labels = [l.replace(' ', '') for l in mocap_read['labels']]
-
+        print("DEBUG cleaned labels:", labels)
+        print("DEBUG type(labels[0])" if labels else "DEBUG labels is empty", type(labels[0]) if labels else None)
         if isinstance(labels[0], str):
             labels = np.array(labels)
         else:
